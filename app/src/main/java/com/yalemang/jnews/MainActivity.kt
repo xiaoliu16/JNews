@@ -1,12 +1,15 @@
 package com.yalemang.jnews
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.yalemang.baselib.base.BaseVmActivity
+import com.yalemang.jnews.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity: BaseVmActivity<ActivityMainBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun initView() {
+
+    }
+
+    override fun initData() {
+
     }
 }
