@@ -5,6 +5,7 @@ import com.yalemang.jnews.databinding.ActivityMainBinding
 
 class MainActivity: BaseVmActivity<ActivityMainBinding>() {
 
+
     override fun initView() {
 
     }
