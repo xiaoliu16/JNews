@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseVmFragment<VB: ViewBinding>: Fragment(){
+abstract class BaseVmFragment<VB : ViewBinding> : Fragment() {
 
     private var _binding: VB? = null
     protected val binding: VB
@@ -27,9 +27,10 @@ abstract class BaseVmFragment<VB: ViewBinding>: Fragment(){
         return _binding!!.root
     }
 
-    private fun attachVb(){
+    private fun attachVb() {
         try {
-            val vmClass = (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
+            val vmClass =
+                (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
             val method: Method = vmClass.getMethod("inflate", LayoutInflater::class.java)
             _binding = method.invoke(null, layoutInflater) as VB
         } catch (e: NoSuchMethodException) {
@@ -45,6 +46,7 @@ abstract class BaseVmFragment<VB: ViewBinding>: Fragment(){
         super.onDestroy()
         _binding = null
     }
+
     abstract fun initView()
     abstract fun initData()
 }

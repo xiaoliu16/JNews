@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseVmActivity<VB:ViewBinding>:AppCompatActivity() {
+abstract class BaseVmActivity<VB : ViewBinding> : AppCompatActivity() {
 
     private var _binding: VB? = null
     protected val binding: VB
@@ -20,13 +20,14 @@ abstract class BaseVmActivity<VB:ViewBinding>:AppCompatActivity() {
         initView()
     }
 
-    private fun attachVb(){
+    private fun attachVb() {
         val type = javaClass.genericSuperclass
         val clazz = (type as ParameterizedType).actualTypeArguments[0] as Class<*>
-        val method = clazz.getMethod("inflate",
-            LayoutInflater::class.java)
-        _binding = method.invoke(null,layoutInflater) as VB?
-
+        val method = clazz.getMethod(
+            "inflate",
+            LayoutInflater::class.java
+        )
+        _binding = method.invoke(null, layoutInflater) as VB?
     }
 
     override fun onDestroy() {
