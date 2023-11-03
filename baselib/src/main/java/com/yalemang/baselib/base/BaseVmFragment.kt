@@ -17,12 +17,11 @@ abstract class BaseVmFragment<VB : ViewBinding> : Fragment() {
         get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         attachVb()
         initData()
+        initObserver()
         initView()
         return _binding!!.root
     }
@@ -49,4 +48,8 @@ abstract class BaseVmFragment<VB : ViewBinding> : Fragment() {
 
     abstract fun initView()
     abstract fun initData()
+
+    open fun initObserver() {
+
+    }
 }

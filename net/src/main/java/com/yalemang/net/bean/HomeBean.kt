@@ -1,4 +1,6 @@
-package com.yalemang.net
+package com.yalemang.net.bean
+
+import java.io.Serializable
 
 data class HomeBean(
     val curPage: Int,
@@ -46,7 +48,8 @@ data class DataList(
     val userId: Int,
     val visible: Int,
     val zan: Int
-)
+): Serializable {
+}
 
 data class Tag(
     val name: String,

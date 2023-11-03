@@ -1,8 +1,8 @@
 package com.yalemang.baselib
+
 import com.tencent.mmkv.MMKV
 
 class MMKVHelper(private val mmkv: MMKV) {
-
     constructor(name: String) : this(MMKV.mmkvWithID(name))
 
     fun isContains(key: String): Boolean {

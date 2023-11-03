@@ -30,7 +30,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
                     PAGE_HOME -> {
                         tab.id = 1
                         tab.text = "首页"
-                        tab.setIcon(R.drawable.nav_home)
+                        tab.setIcon(R.drawable.nav_home_green)
                     }
 
                     PAGE_VIDEO -> {
@@ -46,6 +46,41 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
                     }
                 }
             }.attach()
+            tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    val tabIconColor =
+                        ContextCompat.getColor(this@MainActivity, R.color.light_green)
+                    if (tab != null) {
+                        tab.icon!!.colorFilter =
+                            PorterDuffColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN)
+                    }
+                }
+
+                @SuppressLint("UseCompatLoadingForDrawables")
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                    if (tab != null) {
+                        tab.icon = getDrawable(
+                            when (tab.id) {
+                                PAGE_HOME -> R.drawable.nav_home
+                                PAGE_VIDEO -> R.drawable.nav_video
+                                else -> R.drawable.nav_mine
+                            }
+                        )
+                    }
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                    val tabIconColor =
+                        ContextCompat.getColor(this@MainActivity, R.color.light_green)
+                    if (tab != null) {
+                        tab.icon!!.colorFilter =
+                            PorterDuffColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN)
+                    }
+                }
+            })
+            tabLayout.apply {
+                selectTab(getTabAt(selectedTabPosition))
+            }
         }
     }
 

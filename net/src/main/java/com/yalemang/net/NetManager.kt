@@ -12,11 +12,9 @@ class NetManager private constructor() {
 
     companion object {
         private const val BASE_URL = "https://www.wanandroid.com"
-
         private val INSTANCE by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             NetManager()
         }
-
         fun getInstance() = INSTANCE
     }
 

@@ -17,6 +17,7 @@ abstract class BaseVmActivity<VB : ViewBinding> : AppCompatActivity() {
         attachVb()
         setContentView(binding.root)
         initData()
+        initObserver()
         initView()
     }
 
@@ -37,4 +38,7 @@ abstract class BaseVmActivity<VB : ViewBinding> : AppCompatActivity() {
 
     abstract fun initView()
     abstract fun initData()
+    open fun initObserver() {
+
+    }
 }
